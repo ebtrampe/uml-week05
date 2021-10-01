@@ -29,20 +29,16 @@ pipeline {
                steps {
                     try {
                          sh "./gradlew checkstyleMain"
-                         publishHTML target: [
-                              reportDir: 'build/reports/jacoco/test/html',
-                              reportFiles: 'index.html',
-                              reportName: 'jacoco checkstyle'
-                         ]
                     } 
-                    catch {
+                    catch(all) {
                          sh "checkstylMain failed - generating HTML report"
-                         publishHTML target: [
-                              reportDir: 'build/reports/jacoco/test/html',
-                              reportFiles: 'index.html',
-                              reportName: 'jacoco checkstyle'
-                         ]
+                         
                     }
+                    publishHTML (target: [
+                         reportDir: 'build/reports/jacoco/test/html',
+                         reportFiles: 'index.html',
+                         reportName: 'jacoco checkstyle'
+                    ])
                }
           }
           stage("Package") {
