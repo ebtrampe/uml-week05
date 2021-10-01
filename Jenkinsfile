@@ -35,7 +35,7 @@ pipeline {
                               sh "echo 'checkstyleMain failed - generating HTML report'"        
                          }
                     }
-                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'coverage', reportFiles: 'index.html', reportName: 'jacoco checkstyle', reportTitles: 'jacoco checkstyle'])
+                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/jacoco/test/html', reportFiles: 'index.html', reportName: 'jacoco checkstyle', reportTitles: 'jacoco checkstyle'])
                }
           }
           stage("Package") {
