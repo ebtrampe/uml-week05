@@ -26,20 +26,20 @@ pipeline {
                }
           }
           stage("Static code analysis") {
-               steps {
-                    try {
-                         sh "./gradlew checkstyleMain"
-                    } 
-                    catch(all) {
-                         sh "checkstylMain failed - generating HTML report"
-                         
-                    }
-                    publishHTML (target: [
-                         reportDir: 'build/reports/jacoco/test/html',
-                         reportFiles: 'index.html',
-                         reportName: 'jacoco checkstyle'
-                    ])
+    
+               try {
+                    sh "./gradlew checkstyleMain"
+               } 
+               catch(all) {
+                    sh "checkstylMain failed - generating HTML report"
+                    
                }
+               publishHTML (target: [
+                    reportDir: 'build/reports/jacoco/test/html',
+                    reportFiles: 'index.html',
+                    reportName: 'jacoco checkstyle'
+               ])
+               
           }
           stage("Package") {
                steps {
