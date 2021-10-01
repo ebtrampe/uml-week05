@@ -4,9 +4,13 @@ pipeline {
           pollSCM('* * * * *')
      }
      stages {
+          stage("Chmod") {
+               steps {
+                    sh "chmod +x gradlew"
+               }
+          }
           stage("Compile") {
                steps {
-                    sh "ls -al"
                     sh "./gradlew compileJava"
                }
           }
