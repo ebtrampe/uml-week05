@@ -32,7 +32,7 @@ pipeline {
                               sh "./gradlew checkstyleMain"
                          } 
                          catch(all) {
-                              sh "checkstylMain failed - generating HTML report"        
+                              sh "echo 'checkstyleMain failed - generating HTML report'"        
                          }
                     }
                     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'coverage', reportFiles: 'index.html', reportName: 'jacoco checkstyle', reportTitles: 'jacoco checkstyle'])
