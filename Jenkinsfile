@@ -46,7 +46,7 @@ pipeline {
 
           stage("Docker build") {
                steps {
-                    sh "docker build -t leszko/calculator:${BUILD_TIMESTAMP} ."
+                    sh "docker build -t leszko/calculator:${BUILD_ID} ."
                }
           }
 
