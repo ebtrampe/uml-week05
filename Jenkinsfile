@@ -32,15 +32,10 @@ pipeline {
                               sh "./gradlew checkstyleMain"
                          } 
                          catch(all) {
-                              sh "checkstylMain failed - generating HTML report"
-                              
+                              sh "checkstylMain failed - generating HTML report"        
                          }
                     }
-                    publishHTML (target: [
-                         reportDir: 'build/reports/jacoco/test/html',
-                         reportFiles: 'index.html',
-                         reportName: 'jacoco checkstyle'
-                    ])
+                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'coverage', reportFiles: 'index.html', reportName: 'jacoco checkstyle', reportTitles: 'jacoco checkstyle'])
                }
           }
           stage("Package") {
