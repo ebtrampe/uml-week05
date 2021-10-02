@@ -46,7 +46,6 @@ pipeline {
 
           stage("Docker build") {
                steps {
-                    sh "eval $(minikube docker-env)"
                     sh "docker build -t leszko/calculator:${BUILD_ID} ."
                }
           }
